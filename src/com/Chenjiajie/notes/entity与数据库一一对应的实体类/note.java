@@ -3,9 +3,10 @@ package com.Chenjiajie.notes.entity与数据库一一对应的实体类;
 public class note {
     private String userId;
     private String title;
+    private String nickname;
     private String content;
-    private String isPrivate;
-    private String ok;
+    private int isPrivate;//1为公开
+    private String ok;//点赞数
 
     public String getUserId() {
         return userId;
@@ -31,11 +32,11 @@ public class note {
         this.content = content;
     }
 
-    public String getIsPrivate() {
+    public int getIsPrivate() {
         return isPrivate;
     }
 
-    public void setIsPrivate(String isPrivate) {
+    public void setIsPrivate(int isPrivate) {
         this.isPrivate = isPrivate;
     }
 
@@ -46,4 +47,13 @@ public class note {
     public void setOk(String ok) {
         this.ok = ok;
     }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
 }

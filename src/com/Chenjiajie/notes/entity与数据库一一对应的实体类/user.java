@@ -3,12 +3,29 @@ package com.Chenjiajie.notes.entity与数据库一一对应的实体类;
 public class user {
     private String userID;
     private String password;
-    private String userNickname;
-    private String userSex;
-    private String userIntroduction;
-    private String isBlack;
+    private String userNickname;//昵称
+    private int userSex;//0为男，1为女
+    private String userIntroduction;//自我介绍
+    private String isBlack;//1为黑名单
 
     public user() {
+    }
+
+    public user(String userID, String password, String userNickname, int userSex, String userIntroduction, String isBlack) {
+        this.userID = userID;
+        this.password = password;
+        this.userNickname = userNickname;
+        this.userSex = userSex;
+        this.userIntroduction = userIntroduction;
+        this.isBlack = isBlack;
+    }
+
+    public int getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(int userSex) {
+        this.userSex = userSex;
     }
 
     public String getUserID() {
@@ -33,14 +50,6 @@ public class user {
 
     public void setUserNickname(String userNickname) {
         this.userNickname = userNickname;
-    }
-
-    public String getUserSex() {
-        return userSex;
-    }
-
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
     }
 
     public String getUserIntroduction() {

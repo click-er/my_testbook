@@ -4,6 +4,14 @@ public class admin {
     private String adminID;
     private String password;
 
+    public admin() {
+    }
+
+    public admin(String adminID, String password) {
+        this.adminID = adminID;
+        this.password = password;
+    }
+
     public String getAdminID() {
         return adminID;
     }
