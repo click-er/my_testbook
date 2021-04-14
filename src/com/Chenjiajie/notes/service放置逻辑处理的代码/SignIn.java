@@ -1,7 +1,9 @@
 package com.Chenjiajie.notes.service放置逻辑处理的代码;
 
+import com.Chenjiajie.notes.dao放置数据库或文件读写相关的代码.adminDao;
 import com.Chenjiajie.notes.dao放置数据库或文件读写相关的代码.userDao;
 
+import com.Chenjiajie.notes.entity与数据库一一对应的实体类.admin;
 import com.Chenjiajie.notes.entity与数据库一一对应的实体类.note;
 import com.Chenjiajie.notes.entity与数据库一一对应的实体类.user;
 
@@ -12,6 +14,7 @@ public class SignIn {
     public static void main(String[] args) throws SQLException {
         //实例化Dao类
         userDao userDao = new userDao();
+        admin admin = new admin();
         //正常情况下是监控器起作用的，由于界面暂时没出来，就通过控制台操作
 
         user user = new user();
@@ -35,6 +38,7 @@ public class SignIn {
             System.out.println("登录失败，请重试");
             //重新运行
             //return main();
+            System.exit(1);
         }else {
             System.out.println("登录成功");
         }
@@ -83,13 +87,6 @@ public class SignIn {
             userDao.searchNickname(note.getNickname());
         }
 
-        //设置用户个人信息
-        System.out.println("请问您的昵称是：");
-        user.setUserNickname(scanner.nextLine());
-        System.out.println("您的自我介绍是：");
-        user.setUserIntroduction(scanner.nextLine());
-        userDao.Set(user.getUserID(), user.getUserNickname(), user.getUserIntroduction());
-        
     }
 }
 

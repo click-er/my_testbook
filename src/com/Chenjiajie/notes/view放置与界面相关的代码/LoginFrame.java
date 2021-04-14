@@ -1,4 +1,4 @@
-package com.Chenjiajie.notes.view放置与界面相关的代码;
+/*package com.Chenjiajie.notes.view放置与界面相关的代码;
 
 import com.Chenjiajie.notes.util工具类.MyMonitor;
 import com.Chenjiajie.notes.util工具类.Stringutil;
@@ -91,3 +91,4 @@ public class LoginFrame extends JFrame {
 }
 
 
+*/
