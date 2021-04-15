@@ -26,9 +26,10 @@ public class userService {
         System.out.println("输入的内容为："+user.getPassword());
         System.out.println("请问您的性别是：0为男性，1为女性");
         user.setUserSex(scanner.nextInt());
-        scanner.close();//释放scanner
+//        scanner.close();//释放scanner
         try {
             userDao.Register(user.getUserID(),user.getPassword(),scanner.nextInt());
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -40,7 +41,7 @@ public class userService {
         System.out.println("输入的内容为："+user.getUserID());
         System.out.print("请输入密码：");
         user.setPassword(scanner.nextLine());
-        scanner.close();//释放scanner
+//        scanner.close();//释放scanner
         try {
             if (!userDao.Login(user.getUserID(),user.getPassword())) {
                 System.out.println("登录失败，请重试");
@@ -48,6 +49,7 @@ public class userService {
                 new userService().loginservice();
             }else {
                 System.out.println("登录成功");
+                note.setUserId(user.getUserID());
                 new OtherView().userview();
             }
         } catch (SQLException throwables) {
@@ -62,15 +64,17 @@ public class userService {
         System.out.print("请输入您的自我介绍");
         user.setUserIntroduction(scanner.nextLine());
         System.out.println("输入的内容为："+user.getUserIntroduction());
-        scanner.close();//释放scanner
+//        scanner.close();//释放scanner
         try {
             userDao.Set(user.getUserID(), user.getUserNickname(), user.getUserIntroduction());
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
     public void writeservice(){
+
         note.setUserId(user.getUserID());
         System.out.println("文章标题：");
         note.setTitle(scanner.nextLine());
@@ -88,6 +92,7 @@ public class userService {
     public void lookservice(){
         try {
             userDao.Look(user.getUserNickname());
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -98,6 +103,7 @@ public class userService {
         note.setTitle(scanner.nextLine());
         try {
             userDao.searchTitle(note.getTitle());
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -108,6 +114,7 @@ public class userService {
         note.setNickname(scanner.nextLine());
         try {
             userDao.searchNickname(note.getNickname());
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -127,6 +134,7 @@ public class userService {
         note.setContent(scanner.nextLine());
         try {
             userDao.Update(note.getNickname(), note.getTitle(), note.getContent());
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -137,6 +145,7 @@ public class userService {
         String title = scanner.nextLine();
         try {
             userDao.Delete(title);
+            new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

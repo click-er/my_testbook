@@ -1,4 +1,4 @@
-package com.Chenjiajie.notes.service放置逻辑处理的代码;
+/*package com.Chenjiajie.notes.service放置逻辑处理的代码;
 
 import com.Chenjiajie.notes.dao放置数据库或文件读写相关的代码.adminDao;
 import com.Chenjiajie.notes.dao放置数据库或文件读写相关的代码.userDao;
@@ -90,3 +90,4 @@ public class SignIn {
     }
 }
 
+*/

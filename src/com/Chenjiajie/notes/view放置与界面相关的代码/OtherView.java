@@ -26,6 +26,7 @@ public class OtherView {
         System.out.println("     4.修改已有笔记     ");
         System.out.println("     5.删除已有笔记     ");
         System.out.println("     6.搜索已公开的笔记  ");
+        System.out.println("     7.退出笔记系统     ");
         new Choose().userchoose();
     }
 
@@ -34,6 +35,7 @@ public class OtherView {
         System.out.println("请选择你想要的操作：     ");
         System.out.println("     1.查看所有用户信息     ");
         System.out.println("     2.删除用户笔记（暂无）  ");
+        System.out.println("     3.退出系统            ");
         new Choose().adminchoose();
     }
 

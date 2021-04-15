@@ -75,9 +75,8 @@ public class userDao {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
-                System.out.println("name:"+rs.getString("name"));
-                System.out.println("password:"+rs.getString("password"));
-                while (rs.getString("name").equals(name) &rs.getString("password").equals(password) ){
+                while (
+                    rs.getString("name").equals(name) &rs.getString("password").equals(password) ){
                     System.out.println("正确");Jdbcutil.release(conn,ps,rs);
                     return true;
                 }

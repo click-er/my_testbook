@@ -6,12 +6,16 @@ import com.Chenjiajie.notes.service放置逻辑处理的代码.*;
 
 import java.util.Scanner;
 
+import static com.sun.deploy.trace.Trace.flush;
+
 public class Choose {
 
     public int num() {
+        flush();
         Scanner scanner = new Scanner(System.in);
         int i = scanner.nextInt();
-        scanner.close();
+//        String n =scanner.nextLine();
+        flush();
         return i;
     }
 //突然想起来可以改用switch case!!!
@@ -41,11 +45,13 @@ public class Choose {
             new userService().deleteservice();
         } else if (num() == 6) {//搜索已公开的笔记
             new OtherView().searchview();
-        } else {
+        } else if(num()==7) {
+            System.exit(0);
+        }else {
             System.out.println("输入有误，请重新选择。(1-6)");
             num();
+            }
         }
-    }
 
     public void searchchoose() {
         if (num() == 1) {//按标题搜索
@@ -61,9 +67,12 @@ public class Choose {
     public void adminchoose() {
         if (num() == 1) {//查看所有用户信息，暂无删除功能
             new adminService().lookservice();
-        } else {
-            System.out.println("输入有误，请重新选择。(1)");
+        } else if(num()==3) {
+            System.exit(0);
+        }else {
+            System.out.println("输入有误，请重新选择。(1或3)");
             num();
         }
     }
 }
+

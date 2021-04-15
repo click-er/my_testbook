@@ -10,27 +10,33 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class adminService {
+import static com.sun.deploy.trace.Trace.flush;
 
+public class adminService {
     Scanner scanner = new Scanner(System.in);
     admin admin = new admin();
     adminDao adminDao = new adminDao();
 
         public void lookservice(){
+           //查看完以后直接返回选择操作页面
             try {
                 new adminDao().Look();
+                new OtherView().adminview();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         }
 
     public void loginservice(){
+//        flush();
         System.out.print("请输入用户名：");
         admin.setAdminID(scanner.nextLine());
+//        flush();
         System.out.println("输入的内容为："+ admin.getAdminID());
         System.out.print("请输入密码：");
         admin.setPassword(scanner.nextLine());
-        scanner.close();//释放scanner
+ //       flush();
+//      scanner.close();//释放scanner
         try {
             if (!adminDao.Login(admin.getAdminID(),admin.getPassword())) {
                 System.out.println("登录失败，请重试");
