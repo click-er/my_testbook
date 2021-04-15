@@ -1,8 +1,8 @@
 package com.Chenjiajie.notes.entity与数据库一一对应的实体类;
 
 public class user {
-    private String userID;
-    private String password;
+    private String userID;//用户名，主键
+    private String password;//密码
     private String userNickname;//昵称
     private int userSex;//0为男，1为女
     private String userIntroduction;//自我介绍

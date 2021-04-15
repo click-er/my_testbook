@@ -1,10 +1,10 @@
 package com.Chenjiajie.notes.entity与数据库一一对应的实体类;
 
 public class note {
-    private String userId;
-    private String title;
-    private String nickname;
-    private String content;
+    private String userId;//用户名，不可变的标识
+    private String title;//标题
+    private String nickname;//昵称
+    private String content;//内容
     private int isPrivate;//1为公开
     private String ok;//点赞数
 

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class userDao {
     public void Register(String name, String password,int sex) throws SQLException {
+        //注册，传入用户名、密码、性别，输入到数据库，抛出异常
         Connection conn = null;
         PreparedStatement ps = null;
         Check.checkname.checkname(name);
@@ -38,6 +39,7 @@ public class userDao {
     }
 
     public void Write(String use,String nickname,String title,String content,int isPrivate) throws SQLException {
+        //写入新笔记，传参
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -65,6 +67,7 @@ public class userDao {
     }
 
     public boolean Login(String name, String password) throws SQLException {
+        //登录，将键盘输入的数据与数据库内的一一对比，如果有相等的则成功登录。布尔型，在业务类时根据是否成功登录可选择再次输入信息。
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs =null;
@@ -91,6 +94,7 @@ public class userDao {
     }
 
     public void Delete(String title) throws SQLException {
+        //删除笔记，根据标题删除。实际使用时会只显示作者写的笔记标题，所有可以直接按标题删除。
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -116,6 +120,7 @@ public class userDao {
     }
 
     public void Look(String nickname) throws SQLException {
+        //查看历史笔记，搜索到相关笔记，一一打印
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs =null;
@@ -189,6 +194,7 @@ public class userDao {
     }
 
     public void Set(String use,String nickname,String introduction) throws SQLException {
+        //设置用户信息
         Connection conn = null;
         PreparedStatement ps = null;
         try {
@@ -214,6 +220,7 @@ public class userDao {
     }
 
     public void Update(String nickname,String title,String content) throws SQLException {
+        //更新笔记
         Connection conn = null;
         PreparedStatement ps = null;
         try {

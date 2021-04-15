@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class Jdbcutil {
-
+//JDBC工具类，链接数据库，以及释放连接
     private static String driver =null;
     private static String url =null;
     private static String username =null;

@@ -3,7 +3,6 @@ package com.Chenjiajie.notes.service放置逻辑处理的代码;
 import com.Chenjiajie.notes.dao放置数据库或文件读写相关的代码.userDao;
 import com.Chenjiajie.notes.entity与数据库一一对应的实体类.note;
 import com.Chenjiajie.notes.entity与数据库一一对应的实体类.user;
-import com.Chenjiajie.notes.util工具类.Jdbcutil;
 import com.Chenjiajie.notes.view放置与界面相关的代码.OtherView;
 
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ public class userService {
     userDao userDao = new userDao();
     Scanner scanner = new Scanner(System.in);
 
-    public void registerservice(){
+    public void registerservice(){//注册业务，按要求填写相关信息，传入数据库
         System.out.print("请输入用户名：");
         user.setUserID(scanner.nextLine());
         System.out.println("输入的内容为："+user.getUserID());
@@ -29,13 +28,13 @@ public class userService {
 //        scanner.close();//释放scanner
         try {
             userDao.Register(user.getUserID(),user.getPassword(),scanner.nextInt());
-            new OtherView().userview();
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public void loginservice(){
+    public void loginservice(){//登录业务
         System.out.print("请输入用户名：");
         user.setUserID(scanner.nextLine());
         System.out.println("输入的内容为："+user.getUserID());
@@ -50,14 +49,14 @@ public class userService {
             }else {
                 System.out.println("登录成功");
                 note.setUserId(user.getUserID());
-                new OtherView().userview();
+                new OtherView().userview();//操作完成回到用户主界面选择其他功能
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public void setservice(){
+    public void setservice(){//设置业务，填写信息再更新数据库信息。登录或注册后将用户名传入
         System.out.print("请输入您的昵称");
         user.setUserNickname(scanner.nextLine());
         System.out.println("输入的内容为："+user.getUserNickname());
@@ -67,15 +66,16 @@ public class userService {
 //        scanner.close();//释放scanner
         try {
             userDao.Set(user.getUserID(), user.getUserNickname(), user.getUserIntroduction());
-            new OtherView().userview();
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 
-    public void writeservice(){
-
-        note.setUserId(user.getUserID());
+    public void writeservice(){//创建新笔记
+        note.setUserId(user.getUserID());//将user类的用户名转入note的用户名（一个不可变的标识）
         System.out.println("文章标题：");
         note.setTitle(scanner.nextLine());
         System.out.println("文章内容：");
@@ -84,43 +84,52 @@ public class userService {
         note.setIsPrivate(scanner.nextInt());
         try {
             userDao.Write(note.getUserId(), note.getNickname(), note.getTitle(), note.getContent(), note.getIsPrivate());
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 
-    public void lookservice(){
+    public void lookservice(){//查找历史记录业务
         try {
             userDao.Look(user.getUserNickname());
-            new OtherView().userview();
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 
-    public void titleservice(){
+    public void titleservice(){//按标题搜索，显示公开的相关笔记
         System.out.println("请输入相关标题关键词");
         note.setTitle(scanner.nextLine());
         try {
             userDao.searchTitle(note.getTitle());
-            new OtherView().userview();
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 
-    public void nicknameservice(){
+    public void nicknameservice(){//按昵称搜索，显示公开的相关笔记
         System.out.println("请输入相关用户昵称");
         note.setNickname(scanner.nextLine());
         try {
             userDao.searchNickname(note.getNickname());
-            new OtherView().userview();
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 
-    public void updateservice(){
+    public void updateservice(){//更新笔记
         try {
             userDao.Look(note.getNickname());
         } catch (SQLException throwables) {
@@ -134,13 +143,15 @@ public class userService {
         note.setContent(scanner.nextLine());
         try {
             userDao.Update(note.getNickname(), note.getTitle(), note.getContent());
-            new OtherView().userview();
+            new OtherView().userview();//操作完成回到用户主界面选择其他功能
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 
-    public void deleteservice(){
+    public void deleteservice(){//删除自己已有的笔记
         System.out.println("请输入你想要删除的笔记的标题");
         String title = scanner.nextLine();
         try {
@@ -148,6 +159,8 @@ public class userService {
             new OtherView().userview();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            new OtherView().userview();//异常操作，回到用户主界面选择其他功能
         }
     }
 

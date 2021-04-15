@@ -68,9 +68,13 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`userID`,`password`,`userNickname`,`userSex`,`userIntroduction`,`isBlack`) values 
+('abb','null','abb',0,'null',0),
+('bilibil','123456','hong',0,'大家好，我是小红！',0),
+('cgff','123456','cgff',0,'null',0),
 ('click','123456','xing',1,'null',0),
 ('click2','123456','haha',1,'这个人很懒，什么也没有留下。',0),
-('jiong','123456','hong',0,'大家好，我是小红！',0);
+('jiong','123456','hong',0,'大家好，我是小红！',0),
+('tili','123456','tili',1,'null',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

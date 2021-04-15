@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class adminDao {
 
     public void Look() throws SQLException {
+        //查看所有用户信息，一一打印
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs =null;
@@ -38,6 +39,7 @@ public class adminDao {
     }
 
     public boolean Login(String name, String password) throws SQLException {
+        //登录，与数据库存储的信息对比，一样则登录。布尔型，在业务类时根据是否成功登录可选择再次输入信息
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs =null;
@@ -49,7 +51,7 @@ public class adminDao {
             rs = ps.executeQuery();
             while (rs.next()){
                 while (rs.getString("name").equals(name) &rs.getString("password").equals(password) ){
-                    System.out.println("登陆成功");Jdbcutil.release(conn,ps,rs);
+                    System.out.println("登录成功");Jdbcutil.release(conn,ps,rs);
                     return true;
                 }
             }
@@ -58,7 +60,7 @@ public class adminDao {
         }finally {
             Jdbcutil.release(conn,ps,rs);
         }
-        System.out.println("登陆失败");
+        System.out.println("登录失败");
         return false;
     }
 

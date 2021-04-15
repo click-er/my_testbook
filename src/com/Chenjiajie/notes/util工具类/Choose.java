@@ -9,7 +9,7 @@ import java.util.Scanner;
 import static com.sun.deploy.trace.Trace.flush;
 
 public class Choose {
-
+//工具类，与界面的功能选择挂钩，实现识别数字以及跳转到相应功能
     public int num() {
         flush();
         Scanner scanner = new Scanner(System.in);
@@ -20,6 +20,7 @@ public class Choose {
     }
 //突然想起来可以改用switch case!!!
     public void main() {
+        //从主界面跳转到次级界面
         if (num() == 1) {//管理员登陆
             new OtherView().adminlogin();
         } else if (num() == 2) {//用户登陆
@@ -28,7 +29,7 @@ public class Choose {
             new OtherView().userregister();
         } else {
             System.out.println("输入有误，请重新选择。(1-3)");
-            num();
+            num();//不符合要求则重新输入
         }
     }
 
@@ -45,7 +46,7 @@ public class Choose {
             new userService().deleteservice();
         } else if (num() == 6) {//搜索已公开的笔记
             new OtherView().searchview();
-        } else if(num()==7) {
+        } else if(num()==7) {//退出系统
             System.exit(0);
         }else {
             System.out.println("输入有误，请重新选择。(1-6)");

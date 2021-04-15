@@ -17,7 +17,7 @@ public class adminService {
     admin admin = new admin();
     adminDao adminDao = new adminDao();
 
-        public void lookservice(){
+        public void lookservice(){//管理员查看所有用户信息
            //查看完以后直接返回选择操作页面
             try {
                 new adminDao().Look();
@@ -27,7 +27,7 @@ public class adminService {
             }
         }
 
-    public void loginservice(){
+    public void loginservice(){//管理员登陆
 //        flush();
         System.out.print("请输入用户名：");
         admin.setAdminID(scanner.nextLine());

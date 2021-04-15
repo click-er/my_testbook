@@ -1,8 +1,8 @@
 package com.Chenjiajie.notes.entity与数据库一一对应的实体类;
 
 public class admin {
-    private String adminID;
-    private String password;
+    private String adminID;//管理员名
+    private String password;//管理员密码
 
     public admin() {
     }
